@@ -2,7 +2,7 @@ const express = require('express');
 const dotenv = require('dotenv');
 const cors = require('cors');
 const connectDB = require('./config/dbConfig');
-
+const VisitorRoute = require('./routes/visitorRoute')
 dotenv.config();
 const app = express();
 
@@ -13,9 +13,9 @@ app.use(express.json());
 connectDB();
 
 // Routes
+app.use('/api/visitor', VisitorRoute);
 
-
-
+// Test Route
 app.get('/', (req, res) => {
     res.send('Hello World!');
 });
